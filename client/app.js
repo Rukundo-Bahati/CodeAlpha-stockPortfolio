@@ -18,7 +18,7 @@ async function fetchCurrentStocks() {
             <td>${stock.name}</td>
             <td>${stock.quantity}</td>
             <td>${stock.price}</td>
-            <td>
+            <td class="actionBtns">
                 <button onclick="editStock('${stock._id}')" id="edit" class="actionBtn">Edit</button>
                 <button onclick="deleteStock('${stock._id}')" id="delete" class="actionBtn">Delete</button>
             </td>
@@ -101,3 +101,12 @@ function editStock(stockId) {
 
     showAddStockPage(); // Show the add stock form to edit
 }
+
+
+//toggling sidebar
+let menuIcon = document.querySelector(".bx");
+let sidebarA = document.querySelector(".sidebar");
+
+menuIcon.addEventListener("click", () => {
+    sidebarA.classList.toggle("show"); // Use toggle to show/hide
+});

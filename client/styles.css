@@ -21,6 +21,7 @@ h1, h2 {
     background-color: #333;
     color: white;
     width: 200px;
+    height: 100%;
     padding: 20px;
 }
 
@@ -70,9 +71,14 @@ th {
     background-color: #f4f4f4;
 }
 
-#addStockPage {
-    /* background: #eee; */
+
+.bx {
+    /* width: 2rem; */
+    font-size: 3rem;
+    display: none;
+    margin-top: 3rem;
 }
+
 
 form {
     display: flex;
@@ -131,3 +137,64 @@ form button {
     color: #ddd;
 
 }
+
+.show {
+    display: none;
+}
+
+.actionBtns {
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width:500px) {
+    .bx {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.show {
+        display: block;
+    }
+    #edit  {
+        margin: 1rem;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+    .dashboard {
+      display: flex;
+      flex-direction: column; /* Stack content vertically on small screens */
+    }
+  
+    .sidebar {
+      display: none; /* Initially hidden */
+      width: 30%; 
+      position: fixed; /* Fix sidebar to the viewport */
+      top: 0; /* Position at the top */
+      left: -100%; /* Slide sidebar off-screen initially */
+      transition: all 0.3s ease-in; /* Smooth transition */
+    }
+  
+    .sidebar.show {
+      display: block;
+      left: 0; /* Slide sidebar on-screen */
+    }
+  
+    /* Add a menu button to toggle sidebar */
+    .bx {
+      display: block; /* Now visible on small screens */
+      cursor: pointer; /* Indicate clickable behavior */
+    }
+
+    .actionBtns {
+    flex-direction: column;
+    }
+    #landingPage {
+        width: 100%;
+    }
+  }
