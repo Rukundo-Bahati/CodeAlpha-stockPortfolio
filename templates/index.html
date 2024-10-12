@@ -31,7 +31,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Quantity</th>
-                            <th>Price</th>
+                            <th>Price($)</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -43,7 +43,7 @@
 
             <!-- Add Stock Form: Initially hidden -->
             <section id="addStockPage" style="display: none;">
-                <h2>Add Stock</h2>
+                <h2 id="formTitle">Add Stock</h2> <!-- Updated this line with an ID -->
                 <form id="addStockForm" onsubmit="addStock(event)">
                     <label for="stockName">Stock Name</label>
                     <input type="text" id="stockName" name="stockName" required>
@@ -51,14 +51,36 @@
                     <label for="stockQuantity">Quantity</label>
                     <input type="number" id="stockQuantity" name="stockQuantity" required>
 
-                    <label for="stockPrice">Price</label>
+                    <label for="stockPrice">Price($)</label>
                     <input type="number" id="stockPrice" name="stockPrice" required>
-                     
+
                     <div class="btn">
                         <button type="submit">Add Stock</button>
                     </div>
                 </form>
             </section>
+        </div>
+    </div>
+
+    <!-- Modal for Editing Stock -->
+    <div id="editStockModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2>Edit Stock</h2>
+            <form id="editStockForm">
+                <label for="editStockName">Stock Name</label>
+                <input type="text" id="editStockName" name="editStockName" required>
+
+                <label for="editStockQuantity">Quantity</label>
+                <input type="number" id="editStockQuantity" name="editStockQuantity" required>
+
+                <label for="editStockPrice">Price($)</label>
+                <input type="number" id="editStockPrice" name="editStockPrice" required>
+
+                <div class="btn">
+                    <button type="submit">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 

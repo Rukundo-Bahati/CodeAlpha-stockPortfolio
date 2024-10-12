@@ -34,6 +34,17 @@ def add_stock():
     stocks_collection.insert_one(new_stock)
     return jsonify({"message": "Stock added successfully!"})
 
+# Endpoint to get a single stock by ID
+@app.route('/api/stocks/<stock_id>', methods=['GET'])
+def get_stock(stock_id):
+    stock = stocks_collection.find_one({"_id": ObjectId(stock_id)})
+    if stock:
+        stock['_id'] = str(stock['_id'])  # Convert ObjectId to string
+        return jsonify(stock)
+    else:
+        return jsonify({"error": "Stock not found"}), 404
+
+
 # Endpoint to update a stock
 @app.route('/api/stocks/<stock_id>', methods=['PUT'])
 def update_stock(stock_id):
