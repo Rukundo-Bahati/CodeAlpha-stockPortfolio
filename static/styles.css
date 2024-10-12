@@ -1,0 +1,201 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: dodgerblue;
+    color: white;
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3 ease-in;
+}
+
+.sidebar ul li a:hover {
+    color: #ddd;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+
+.bx {
+    /* width: 2rem; */
+    font-size: 3rem;
+    display: none;
+    margin-top: 3rem;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1.3rem;
+}
+
+.btn {
+    text-align: center;
+}
+
+.btn button {
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #999;
+    transition: all 0.3s ease-in;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.btn button:hover {
+    background: #777;
+}
+
+form input {
+    height: 2rem;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid #333;
+    padding: 0.4rem 0.7rem;
+    font-size: 1.4rem;
+}
+
+form button {
+    height: 2.5rem;
+    width: 50%;
+}
+
+.actionBtn {
+    border: 1px solid #999;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 0.3rem 1rem;
+    margin: 0 1.4rem;
+    border-radius: 8px;
+}
+
+#delete {
+    background: red;
+
+}
+
+#edit {
+    background: dodgerblue;
+    color: #ddd;
+
+}
+
+.show {
+    display: none;
+}
+
+.actionBtns {
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width:500px) {
+    .bx {
+        display: block;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .sidebar.show {
+        display: block;
+    }
+    #edit  {
+        margin: 1rem;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+    .dashboard {
+      display: flex;
+      flex-direction: column; /* Stack content vertically on small screens */
+    }
+  
+    .sidebar {
+      display: none; /* Initially hidden */
+      width: 30%; 
+      position: fixed; /* Fix sidebar to the viewport */
+      top: 0; /* Position at the top */
+      left: -100%; /* Slide sidebar off-screen initially */
+      transition: all 0.3s ease-in; /* Smooth transition */
+    }
+  
+    .sidebar.show {
+      display: block;
+      left: 0; /* Slide sidebar on-screen */
+    }
+  
+    /* Add a menu button to toggle sidebar */
+    .bx {
+      display: block; /* Now visible on small screens */
+      cursor: pointer; /* Indicate clickable behavior */
+    }
+
+    .actionBtns {
+    flex-direction: column;
+    }
+    #landingPage {
+        width: 100%;
+    }
+  }
