@@ -182,7 +182,7 @@ form button {
     }
   
     .sidebar {
-      display: none; /* Initially hidden */
+      display: none;
       width: 30%; 
       position: fixed; /* Fix sidebar to the viewport */
       top: 0; /* Position at the top */
@@ -192,7 +192,7 @@ form button {
   
     .sidebar.show {
       display: block;
-      left: 0; /* Slide sidebar on-screen */
+      left: 0;
     }
   
     /* Add a menu button to toggle sidebar */
@@ -265,6 +265,32 @@ form button {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
+
+
+/* Sidebar styles for screens less than 500px */
+@media screen and (max-width: 500px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Hidden off-screen */
+        height: 100%;
+        width: 250px;
+        transition: left 0.3s ease-in-out; /* Smooth slide in/out */
+    }
+
+    .sidebar.show {
+        left: 0; /* Slide in when .show is added */
+    }
+
+    .bx {
+        display: block;
+        font-size: 2.5rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+}
+
 
 .modal-content {
     background-color: #fefefe;

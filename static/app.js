@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Add event listeners for view and add stock links
     document.getElementById('viewStocksLink').addEventListener('click', showLandingPage);
     document.getElementById('addStockLink').addEventListener('click', showAddStockPage);
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+
+    // Fetch and display current stocks
+
+
 
     // Modal close button event listener
     document.getElementById('closeModal').addEventListener('click', closeModal);
@@ -9,27 +13,41 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchCurrentStocks();
 });
 
+const sidebar = document.querySelector(".sidebar");
+const menuIcon = document.querySelector(".bx-menu-alt-left");
+
+menuIcon.addEventListener("click", () => {
+    sidebar.classList.toggle("show");
+});
+
+
 // Function to fetch and display current stocks
 async function fetchCurrentStocks() {
-    const response = await fetch('/api/stocks');
-    const stocks = await response.json();
+    try {
+        const response = await fetch('/api/stocks');
+        const stocks = await response.json();
 
-    const tbody = document.querySelector('#recentStocksTable tbody');
-    tbody.innerHTML = ''; // Clear existing rows
+        console.log(stocks); // Add this to debug if the API is returning data
 
-    stocks.forEach(stock => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${stock.name}</td>
-            <td>${stock.quantity}</td>
-            <td>${stock.price}</td>
-            <td>
-                <button onclick="openEditStockModal('${stock._id}')" id="edit" class="actionBtn">Edit</button>
+        const tbody = document.querySelector('#recentStocksTable tbody');
+        tbody.innerHTML = ''; // Clear existing rows
+
+        stocks.forEach(stock => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${stock.name}</td>
+                <td>${stock.quantity}</td>
+                <td>${stock.price}</td>
+                <td>
+                    <button onclick="openEditStockModal('${stock._id}')" id="edit" class="actionBtn">Edit</button>
                 <button onclick="deleteStock('${stock._id}')" id="delete" class="actionBtn">Delete</button>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch (error) {
+        console.error('Error fetching stocks:', error);
+    }
 }
 
 // Function to add a stock
